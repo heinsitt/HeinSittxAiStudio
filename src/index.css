@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    
+    --bg-void: #03070d;
+    --bg-panel: #070d18;
+    --bg-panel-elevated: #0d1728;
+    --neon-cyan: #00F5FF;
+    --neon-cyan-glow: rgba(0, 245, 255, 0.25);
+    --neon-purple: #A855F7;
+    --neon-purple-glow: rgba(168, 85, 247, 0.25);
+    --neon-green: #00FF87;
+    --neon-amber: #FF9E0B;
+    --border-wire: rgba(0, 245, 255, 0.15);
+    --border-dim: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    background-color: var(--bg-void);
+    color: #E2E8F0;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #03070d;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.5);
+}
+
+/* Blueprint grid background */
+.blueprint-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 245, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 245, 255, 0.04) 1px, transparent 1px);
+}
+
+.isometric-dots {
+  background-size: 28px 28px;
+  background-image: radial-gradient(circle, rgba(0, 245, 255, 0.1) 1px, transparent 1px);
+}
+
+/* Wireframe border effect */
+.wireframe-box {
+  position: relative;
+  border: 1px solid rgba(0, 245, 255, 0.18);
+  background: linear-gradient(135deg, rgba(7, 13, 24, 0.85) 0%, rgba(13, 23, 40, 0.7) 100%);
+  backdrop-filter: blur(12px);
+}
+
+.wireframe-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #00F5FF;
+  border-left: 2px solid #00F5FF;
+  pointer-events: none;
+}
+
+.wireframe-box::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #00F5FF;
+  border-right: 2px solid #00F5FF;
+  pointer-events: none;
+}
+
+/* Laser scanline effect */
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 100%;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 245, 255, 0.015) 51%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+/* Neon glow texts */
+.neon-glow-cyan {
+  text-shadow: 0 0 12px rgba(0, 245, 245, 0.4), 0 0 24px rgba(0, 245, 255, 0.2);
+}
+
+.neon-glow-purple {
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.4), 0 0 24px rgba(168, 85, 247, 0.2);
+}
+
+.neon-glow-green {
+  text-shadow: 0 0 12px rgba(0, 255, 135, 0.4);
+}
+
+/* Subtle data badge */
+.badge-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  background: rgba(0, 245, 255, 0.05);
+  color: #00F5FF;
+}
+
+/* Chamfered corners utility */
+.chamfer {
+  clip-path: polygon(
+    0 8px,
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+}
